@@ -1,9 +1,9 @@
-NAME=gnl.c \
-	 utils.c \
+NAME=gnl-supa.c \
+	 get_next_line_utils.c \
 
-HEADER=gnl.h
+HEADER=get_next_line.h
 
-DIR=../../get_next_line
+DIR=../get_next_line
 
 FLAGS=-Wall -Wextra -Werror
 BS=-D BUFFER_SIZE
