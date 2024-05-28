@@ -1,4 +1,4 @@
-NAME=gnl-supa.c \
+NAME=get_next_line.c \
 	 get_next_line_utils.c \
 
 HEADER=get_next_line.h
