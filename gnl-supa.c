@@ -1,4 +1,3 @@
-
 # include "get_next_line.h"
 
 /*	Return one line
@@ -32,33 +31,27 @@ char	*get_next_line(int fd)
 
 	tmp = 0;
 	read_bytes = -1;
-	write(1, "in get next line\n", 17);
 	while (!check_nl(total_buffer))
 	{
 		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		write(1, "in while\n", 9);
-		write(1, "read bytes: ", 12);
-		char *rb = ft_itoa(read_bytes);
-		write(1, rb, ft_strlen(rb));
 		if (read_bytes < 0)
 			return (0);
 		if (read_bytes == 0)
-			return (total_buffer);
-		else 
-		{
-			buffer[read_bytes] = 0;
-			tmp = total_buffer;
-			total_buffer = ft_strjoin(total_buffer, buffer);
-			free(tmp);
-			tmp = 0;
-		}
+			break;
+		buffer[read_bytes] = 0;
+		tmp = total_buffer;
+		if (total_buffer == 0)
+			total_buffer = "";
+		total_buffer = ft_strjoin(total_buffer, buffer);
+		free(tmp);
+		tmp = 0;
 	}
 	if (check_nl(total_buffer))
 	{
 		end = ft_strlen(total_buffer);
 		result = ft_substr(total_buffer, 0, check_nl(total_buffer));
 		tmp = total_buffer;
-		total_buffer = ft_substr(total_buffer, check_nl(total_buffer) - 1, end);
+		total_buffer = ft_substr(total_buffer, check_nl(total_buffer), end);
 		free(tmp);
 		tmp = 0;
 		return (result);

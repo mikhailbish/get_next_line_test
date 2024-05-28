@@ -27,9 +27,7 @@ static void	ft_fill_string(char *result, int n, int length)
 	}
 	current = 0;
 	if (n == 0)
-	{
 		result[0] = '0';
-	}
 	while (n)
 	{
 		if (n < 0)
@@ -64,21 +62,27 @@ char	*ft_itoa(int n)
 
 int main(void)
 {
-	write(1, "in main\n", 8);
+//	write(1, "in main\n", 8);
 	int fd = open("testtxt", O_RDONLY);
 	char *line;
 	int done = 0;
 	if (fd > 0)
 	{
-		write(1, "in fd\n", 6);
+//		write(1, "in fd\n", 6);
 		while(line)
 		{
 			line = get_next_line(fd);
-	//		if (line)
-	//			printf("%s", line);
+			if (line)
+				printf("%s", line);
+			line = get_next_line(fd);
+			if (line)
+				printf("%s", line);
+			line = get_next_line(fd);
+			if (line)
+				printf("%s", line);
 			if (!line)
 				break;
-//			free(line);
+			free(line);
 		}
 	} else
 	{
