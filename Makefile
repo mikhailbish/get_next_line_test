@@ -9,7 +9,7 @@ FLAGS=-Wall -Wextra -Werror
 BS=-D BUFFER_SIZE
 
 all: ${NAME} ${HEADER}
-	cc ${BS}=40 test.c ${NAME} && ./a.out
+	cc ${BS}=9999999999999 test.c ${NAME} && ./a.out
 
 %.c: 
 	cp ${DIR}/$@ ./
