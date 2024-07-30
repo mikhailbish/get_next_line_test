@@ -1,32 +1,26 @@
-NAME=get_next_line.c \
-	 get_next_line_utils.c \
+LIB=libft.a
 
-BNAME=get_next_line_bonus.c \
-	 get_next_line_utils_bonus.c \
+HEADER=libft.h
 
-HEADER=get_next_line.h
-
-BHEADER=get_next_line_bonus.h
-
-DIR=../get_next_line
+DIR=../libft
 
 FLAGS=-Wall -Wextra -Werror
 BS=-D BUFFER_SIZE
 
-all: ${NAME} ${HEADER}
-	cc ${BS}=1000000 test.c ${NAME} && ./a.out
+all: $(HEADER) ${LIB} test.c
+	cc ${BS}=100000 test.c $(LIB) && ./a.out
 
-bonus: ${BNAME} ${BHEADER}
-	cc ${BS}=1000000 bonus-test.c ${BNAME} && ./a.out
+$(LIB):
+	make -C $(DIR) re
+	cp $(DIR)/$(LIB) ./
 
-%.c: 
-	cp ${DIR}/$@ ./
+$(HEADER):
+	cp $(DIR)/$(HEADER) ./
 
-%.h:
-	cp ${DIR}/$@ ./
 
 clean:
-	rm -f ${NAME} ${HEADER} ${BNAME} ${BHEADER}
+	rm -f ${HEADER}
+	rm -f ${LIB}
 	rm -f a.out 
 
 re: clean all

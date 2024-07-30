@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
 #include <stdio.h>
 static int	ft_get_int_length(int n)
