@@ -64,17 +64,17 @@ int main(void)
 {
 //	write(1, "in main\n", 8);
 	printf("%lu\n", BUFFER_SIZE);
-	int fd = open("testtxt", O_RDONLY);
+	int fd = 0; //open("testtxt", O_RDONLY);
 	char *line;
 	int done = 0;
-	if (fd > 0)
+	if (fd > -1)
 	{
 		write(1, "in fd\n", 6);
 		while(line)
 		{
-			write(1, "befor gnl\n", 10);
+//			write(1, "befor gnl\n", 10);
 			line = get_next_line(fd);
-			write(1, "after gnl\n", 10);
+//			write(1, "after gnl\n", 10);
 			if (line)
 			{
 				printf("%s", line);
