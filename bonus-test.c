@@ -63,10 +63,19 @@ char	*ft_itoa(int n)
 int main(void)
 {
 //	write(1, "in main\n", 8);
+	
 	printf("%lu\n", BUFFER_SIZE);
 	int fd = open("testtxt", O_RDONLY);
 	char *line;
 	int done = 0;
+	int fds[1025];
+	int i = 0;
+	
+	while(i < 1025)
+	{
+		fds[i] = open("some", O_RDONLY);
+		i++;
+	}	
 	if (fd > -1)
 	{
 		write(1, "in fd\n", 6);
