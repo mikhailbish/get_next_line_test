@@ -67,7 +67,7 @@ int main(void)
 	int fd = open("testtxt", O_RDONLY);
 	char *line;
 	int done = 0;
-	if (fd > 0)
+	if (fd > -1)
 	{
 		write(1, "in fd\n", 6);
 		while(line)
