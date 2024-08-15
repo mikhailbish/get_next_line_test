@@ -17,7 +17,7 @@ all: ${NAME} ${HEADER}
 	cc ${BS}=1000000 test.c ${NAME} && ./a.out
 
 bonus: ${BNAME} ${BHEADER}
-	cc ${BS}=1000000 bonus-test.c ${BNAME} && ./a.out
+	cc ${BS}=1000000 bonus-test.c ${BNAME} && man write | ./a.out
 
 %.c: 
 	cp ${DIR}/$@ ./

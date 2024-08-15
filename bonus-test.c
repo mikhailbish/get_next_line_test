@@ -64,35 +64,51 @@ int main(void)
 {
 //	write(1, "in main\n", 8);
 	
-	printf("%lu\n", BUFFER_SIZE);
-	int fd = open("testtxt", O_RDONLY);
+//	printf("%lu\n", BUFFER_SIZE);
+//	int fd = open("testtxt", O_RDONLY);
 	char *line;
+	char *some;
 	int done = 0;
 	int fds[1025];
-	int i = 0;
+	int i = 3;
+	fds[0] = 0;
+	fds[1] = 1;
+	fds[2] = 2;
 	
 	while(i < 1025)
 	{
 		fds[i] = open("some", O_RDONLY);
+		printf("opened %d\n", fds[i]);
 		i++;
-	}	
-	if (fd > -1)
-	{
-		write(1, "in fd\n", 6);
-		while(line)
+	}
+	i = 0;
+	while (i < 1025)
+	{	
+		if (i == 1)
 		{
-			write(1, "befor gnl\n", 10);
-			line = get_next_line(fd);
-			write(1, "after gnl\n", 10);
-			if (line)
-			{
-				printf("%s", line);
-				free(line);
-			}
+			i++;
+			i++;
 		}
-	} else
-	{
-		printf("opening error");
+		printf("%d fds[i]: %d\n", i, fds[i]);
+		if (fds[i] > -1)
+		{
+			while(line)
+			{
+				line = get_next_line(fds[i]);
+				if (line)
+				{
+					printf("%s", line);
+					free(line);
+				}
+			}
+			line = some;
+			if (i != 0)
+				close(fds[i]);
+		} else
+		{
+			printf("opening error, i: %d fds[i]: %d\n", i, fds[i]);
+		}
+		i++;
 	}
 	return (0);
 }
