@@ -32,3 +32,6 @@ clean:
 re: clean all
 
 .PHONY:all clean re
+
+#valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+#cc -g
